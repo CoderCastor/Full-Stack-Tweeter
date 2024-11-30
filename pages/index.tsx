@@ -66,29 +66,29 @@ export default function Home() {
               ))}
             </ul>
             <div className="mt-5 px-3">
-            <button className="bg-[#1d9bf0] font-semibold p-3 w-full text-xl rounded-full">
-              Tweet
-            </button>
+              <button className="bg-[#1d9bf0] font-semibold p-3 w-full text-xl rounded-full">
+                Tweet
+              </button>
             </div>
           </div>
         </div>
         <div className="col-span-5 h-screen overflow-y-auto w-4/5 border-r-[1px] border-l-[1px] border border-gray-600">
-          <FeedCard/>
-          <FeedCard/>
-          <FeedCard/>
-          <FeedCard/>
-          <FeedCard/>
-          <FeedCard/>
-          <FeedCard/>
-          <FeedCard/>
-          <FeedCard/>
-          <FeedCard/>
-          <FeedCard/>
-          <FeedCard/>
-          <FeedCard/>
-          <FeedCard/>
-          <FeedCard/>
-          <FeedCard/>
+          <FeedCard />
+          <FeedCard />
+          <FeedCard />
+          <FeedCard />
+          <FeedCard />
+          <FeedCard />
+          <FeedCard />
+          <FeedCard />
+          <FeedCard />
+          <FeedCard />
+          <FeedCard />
+          <FeedCard />
+          <FeedCard />
+          <FeedCard />
+          <FeedCard />
+          <FeedCard />
         </div>
         <div className="col-span-3 "></div>
       </div>
