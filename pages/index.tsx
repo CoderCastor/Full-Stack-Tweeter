@@ -94,8 +94,9 @@ export default function Home() {
           <FeedCard />
           <FeedCard />
         </div>
-        <div className="col-span-3 ">
-          <div className="p-5 bg-slate-700 rounded-lg">
+        <div className="col-span-3 -translate-x-32 pt-4">
+          <h4 className="px-4">Haven't any account ? </h4>
+          <div className="p-5 bg-slate-900 rounded-lg">
             <GoogleLogin onSuccess={(cred) => console.log(cred)} />
           </div>
         </div>
