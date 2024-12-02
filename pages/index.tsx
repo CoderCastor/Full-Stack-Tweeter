@@ -5,6 +5,9 @@ import { BsBell, BsBookmark, BsEnvelope } from "react-icons/bs";
 import { FaTwitter } from "react-icons/fa";
 import { SlOptions } from "react-icons/sl";
 import { CredentialResponse, GoogleLogin } from "@react-oauth/google";
+import toast from "react-hot-toast";
+import { graphQLClient } from "@/clients/api";
+import { verifyUserGoogleTokenQuery } from "@/graphql/query/user";
 
 interface TwitterSidebarButton {
   title: string;
@@ -47,8 +50,23 @@ const SidebarMenuItems: TwitterSidebarButton[] = [
 ];
 
 export default function Home() {
+  const handleLoginWithGoogle = useCallback(
+    async (cred: CredentialResponse) => {
+      const googleToken = cred.credential;
+      if (!googleToken) return toast.error(`Google token not found`);
 
-  const handleLoginWithGoogle = useCallback((cred: CredentialResponse)=>{},[])
+      const { verifyGoogleToken } = await graphQLClient.request(
+        verifyUserGoogleTokenQuery,
+        { token: googleToken }
+      );
+
+      toast.success('Verified Success')
+      console.log(verifyGoogleToken);
+
+      if(verifyGoogleToken) window.localStorage.setItem('__twitter_token',verifyGoogleToken)
+    },
+    []
+  );
 
   return (
     <div>
@@ -95,9 +113,9 @@ export default function Home() {
           <FeedCard />
         </div>
         <div className="col-span-3 -translate-x-32 pt-4">
-          <h4 className="px-4">Haven't any account ? </h4>
+          <h4 className="px-4">No any account ? </h4>
           <div className="p-5 bg-slate-900 rounded-lg">
-            <GoogleLogin onSuccess={(cred) => console.log(cred)} />
+            <GoogleLogin onSuccess={handleLoginWithGoogle} />
           </div>
         </div>
       </div>
